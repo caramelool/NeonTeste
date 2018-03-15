@@ -17,13 +17,13 @@ import javax.inject.Singleton
  * Created by lucascaramelo on 13/03/2018.
  */
 @Module
-class RetrofitModule {
+class RetrofitModule(private val baseUrl: String? = null) {
 
     @Singleton
     @Provides
     @Named("baseUrl")
     fun baseUrl(): String {
-        return "https://processoseletivoneon.neonhomol.com.br/"
+        return baseUrl ?: "https://processoseletivoneon.neonhomol.com.br/"
     }
 
     @Singleton

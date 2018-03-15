@@ -8,7 +8,7 @@ import br.com.caramelo.neonteste.ui.base.BaseViewModel
 /**
  * Created by lucascaramelo on 13/03/2018.
  */
-class HomeViewModel(
+open class HomeViewModel(
         private val neonRepository: NeonRepository
 ): BaseViewModel() {
 
@@ -21,7 +21,7 @@ class HomeViewModel(
             return field
         }
 
-    private fun requestMe() {
+    open fun requestMe() {
         loadingLiveData.postValue(true)
         neonRepository.me()
                 .observer { me ->
@@ -30,6 +30,7 @@ class HomeViewModel(
                 }
                 .observerThrowable {
                     errorLiveData.postValue(it)
+                    loadingLiveData.postValue(false)
                 }
     }
 }

@@ -28,14 +28,14 @@ open class NeonRepository(private val api: NeonApi) {
 
     open fun me(): RepositoryLiveData<Me> {
         val liveData = RepositoryLiveData<Me>()
+        val me = Me()
         async {
-            val me = Me()
             try {
                 TokenManager.token = api.generateToken(me.name, me.email).await()
+                liveData.postValue(me)
             } catch (t: Throwable) {
                 liveData.postThowable(t)
             }
-            liveData.postValue(me)
         }
         return liveData
     }
@@ -43,7 +43,6 @@ open class NeonRepository(private val api: NeonApi) {
     open fun listContact(withMoney: Boolean = false): RepositoryLiveData<List<Contact>> {
         val liveData = RepositoryLiveData<List<Contact>>()
         async {
-            Thread.sleep(2000)
             val list = contactList
             if (withMoney) {
                 try {
@@ -67,7 +66,6 @@ open class NeonRepository(private val api: NeonApi) {
     open fun sendMoney(contact: Contact, money: Float): RepositoryLiveData<Boolean>? {
         val liveData = RepositoryLiveData<Boolean>()
         async {
-            Thread.sleep(2000)
             try {
                 val sent = api.sendMoney(contact.id, token, money).await()
                 liveData.postValue(sent)

@@ -4,7 +4,6 @@ import br.com.caramelo.neonteste.data.model.Transfer
 import kotlinx.coroutines.experimental.Deferred
 import retrofit2.http.*
 
-
 /**
  * Created by lucascaramelo on 13/03/2018.
  */

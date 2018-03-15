@@ -1,5 +1,6 @@
 package br.com.caramelo.neonteste.di
 
+import br.com.caramelo.neonteste.data.repository.NeonRepository
 import br.com.caramelo.neonteste.data.repository.NeonRepositoryFactory
 import br.com.caramelo.neonteste.di.module.RepositoryModule
 import br.com.caramelo.neonteste.di.module.RetrofitModule
@@ -15,6 +16,9 @@ import javax.inject.Singleton
     RetrofitModule::class,
     RepositoryModule::class])
 interface NeonComponent {
+
+    val neonRepository: NeonRepository
+
     fun inject(factory: NeonRepositoryFactory)
     fun inject(factory: SendMoneyViewModelFactory)
 }

@@ -1,6 +1,5 @@
 package br.com.caramelo.neonteste.ui.history
 
-import android.support.transition.TransitionManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -54,7 +53,6 @@ class HistoryGraphAdapter : RecyclerView.Adapter<HistoryGraphAdapter.SendMoneyHo
     override fun getItemCount(): Int = dataGraph.size
 
     inner class GraphItem(val item: Contact) {
-        var animated = false
         var percent: Float = 1f
             get() {
                 field = ((item.transfer * 50) / maxTransfer)
@@ -79,20 +77,12 @@ class HistoryGraphAdapter : RecyclerView.Adapter<HistoryGraphAdapter.SendMoneyHo
                     .replace("[^0-9.,]".toRegex(), "")
 
             containerLine.doOnPreDraw {
-                line.layoutParams.height = 0
-                line.requestLayout()
-                val height = itemView.height * graphItem.percent / 100
-                if (!graphItem.animated) {
-                    line.postDelayed({
-                        graphItem.animated = true
-                        TransitionManager.beginDelayedTransition(containerLine)
-                        line.layoutParams.height = height.toInt()
-                        line.requestLayout()
-                    }, 1000)
-                } else {
-                    line.layoutParams.height = height.toInt()
-                    line.requestLayout()
+                var height = 0f
+                if (contact.transfer > 0f) {
+                    height = itemView.height * graphItem.percent / 100
                 }
+                line.layoutParams.height = height.toInt()
+                line.requestLayout()
             }
         }
     }

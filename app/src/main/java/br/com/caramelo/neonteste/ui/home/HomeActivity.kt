@@ -39,12 +39,14 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        viewModel.errorLiveData.observe(this, errorObserver)
         viewModel.loadingLiveData.observe(this, loadingObserver)
         viewModel.meLiveData?.observe(this, meObserver)
     }
 
     private val loadingObserver = Observer<Boolean> {
         TransitionManager.beginDelayedTransition(constraintLayout)
+        retryContainer.visibility = View.GONE
         if (it == true) {
             loading.visibility = View.VISIBLE
             sendMoneyButton.visibility = View.GONE
@@ -53,13 +55,21 @@ class HomeActivity : AppCompatActivity() {
             nameTextView.visibility = View.GONE
             emailTextView.visibility = View.GONE
         } else {
-            TransitionManager.beginDelayedTransition(constraintLayout)
             loading.visibility = View.GONE
             sendMoneyButton.visibility = View.VISIBLE
             historyButton.visibility = View.VISIBLE
             meImageView.visibility = View.VISIBLE
             nameTextView.visibility = View.VISIBLE
             emailTextView.visibility = View.VISIBLE
+        }
+    }
+
+    private val errorObserver = Observer<Throwable> {
+        TransitionManager.beginDelayedTransition(constraintLayout)
+        loading.visibility = View.GONE
+        retryContainer.visibility = View.VISIBLE
+        retryButton.setOnClickListener {
+            viewModel.requestMe()
         }
     }
 

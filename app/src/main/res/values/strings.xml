@@ -7,5 +7,6 @@
     <string name="send_history">Histórico de Envios</string>
     <string name="money_to_send">Valor a enviar:</string>
     <string name="send">Enviar</string>
+    <string name="retry">Tentar Novamente</string>
 
 </resources>

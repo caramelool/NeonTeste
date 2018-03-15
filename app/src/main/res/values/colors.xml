@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/ebony_clay</color>
+    <color name="colorPrimaryDark">@color/ebony_clay</color>
+    <color name="colorAccent">@color/persian_green</color>
+
+    <color name="ebony_clay">#212935</color>
+    <color name="orient">#005082</color>
+    <color name="persian_green">#00a7a8</color>
+    <color name="teal">#008586</color>
+    <color name="cello">#22586a</color>
+    <color name="bon_jour">#EFEEEF</color>
+</resources>

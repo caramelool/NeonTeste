@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NeonTeste</string>
+    <string name="title_activity_send_money">@string/send_money</string>
+    <string name="title_activity_history">@string/send_history</string>
+
+    <string name="send_money">Enviar Dinheiro</string>
+    <string name="send_history">Histórico de Envios</string>
+    <string name="money_to_send">Valor a enviar:</string>
+    <string name="send">Enviar</string>
+
+</resources>

@@ -9,7 +9,17 @@ import br.com.caramelo.neonteste.di.module.RetrofitModule
 /**
  * Created by lucascaramelo on 13/03/2018.
  */
-class NeonApplication: Application()
+class NeonApplication: Application() {
+
+    companion object {
+        var instance: NeonApplication? = null
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+    }
+}
 
 val component: NeonComponent by lazy {
     DaggerNeonComponent.builder()

@@ -30,6 +30,10 @@ open class SendMoneyViewModel(
     }
 
     fun sendMoney() {
+        if (money <= 0f) {
+            progressLiveData.postValue(SendMoneyProgress.Error)
+            return
+        }
         progressLiveData.postValue(SendMoneyProgress.Sending)
         repository.sendMoney(contact, money)?.observer { success ->
             if (success == true) {

@@ -1,4 +1,4 @@
-package br.com.caramelo.neonteste.ui
+package br.com.caramelo.neonteste
 
 import br.com.caramelo.neonteste.di.DaggerNeonComponent
 import br.com.caramelo.neonteste.di.NeonComponent

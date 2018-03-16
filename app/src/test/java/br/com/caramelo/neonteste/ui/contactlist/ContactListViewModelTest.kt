@@ -1,43 +1,26 @@
 package br.com.caramelo.neonteste.ui.contactlist
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
 import br.com.caramelo.neonteste.data.model.Contact
 import br.com.caramelo.neonteste.data.repository.NeonRepository
-import br.com.caramelo.neonteste.ui.getComponentForTest
-import com.nhaarman.mockito_kotlin.*
+import br.com.caramelo.neonteste.BaseTest
 import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestRule
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.mockito.ArgumentMatchers.any
+import org.mockito.Mockito.*
 
 /**
  * Created by lucascaramelo on 14/03/2018.
  */
-@RunWith(JUnit4::class)
-class ContactListViewModelTest {
+class ContactListViewModelTest : BaseTest() {
 
-    @get:Rule
-    var rule: TestRule = InstantTaskExecutorRule()
-
-    private lateinit var server: MockWebServer
     private lateinit var repository: NeonRepository
     private lateinit var viewModel: ContactListViewModel
 
-    private val componentTest by lazy {
-        getComponentForTest(server.url("/").toString())
-    }
-
     @Before
-    fun `before each test`() {
-        server = MockWebServer()
-        server.start()
-
+    override fun `before each test`() {
+        super.`before each test`()
         repository = spy(componentTest.neonRepository)
         viewModel = spy(ContactListViewModel(repository))
     }
@@ -62,10 +45,4 @@ class ContactListViewModelTest {
         verify(loadingObserver).onChanged(false)
 
     }
-
-    @After
-    fun `after each test`() {
-        server.shutdown()
-    }
-
 }

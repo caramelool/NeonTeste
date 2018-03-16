@@ -33,10 +33,5 @@
         <item name="android:textSize">26sp</item>
         <item name="android:inputType">numberDecimal</item>
     </style>
-    
-    <style name="NeonDialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
-        <item name="android:windowExitAnimation">@anim/slide_down_dialog</item>
-    </style>
 
 </resources>

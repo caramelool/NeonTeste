@@ -1,0 +1,97 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/neon_bg_send_dialog"
+    tools:context="br.com.caramelo.neonteste.ui.sendmoney.SendMoneyFragment">
+
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:src="@drawable/ic_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_gravity="start"
+        android:layout_margin="15dp"
+        android:contentDescription="@null"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="400dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="15dp">
+
+        <br.com.caramelo.neonteste.uibase.NeonImageView
+            android:id="@+id/contactImageView"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:contentDescription="@null"/>
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            tools:text="Lucas Caramelo"/>
+
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="@android:color/white"
+            tools:text="(11) 99455-1451"/>
+
+        <TextView
+            android:text="@string/money_to_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="17sp"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/moneyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            style="@style/NeonSendEditTextStyle"/>
+
+        <FrameLayout
+            android:id="@+id/containerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <include
+                layout="@layout/neon_loading"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center"
+                android:visibility="invisible"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/checkAnimation"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center"
+                app:lottie_rawRes="@raw/sendmoney_success"/>
+
+            <Button
+                android:id="@+id/sendButton"
+                android:text="@string/send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

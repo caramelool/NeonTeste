@@ -32,7 +32,7 @@ class HomeViewModelTest : BaseTest() {
         val loadingObserver: Observer<Boolean> = mock()
         val meObserver: Observer<Me> = mock()
 
-        val token = "meu token bonitão"
+        val token = "1234-1234-1234-1234"
 
         server.enqueue(MockResponse()
                 .setResponseCode(200)
